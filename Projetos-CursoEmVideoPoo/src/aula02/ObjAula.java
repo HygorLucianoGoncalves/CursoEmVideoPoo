@@ -9,7 +9,7 @@ public class ObjAula {
 	boolean salastatus;
 	
 	void MostraInfoAula() {
-		System.out.println("Data da aula é no dia: " + this.data);
+		System.out.println("Data da aula é no dia " + this.data);
 		System.out.println("Qual vai ser a Materia da aula: " + this.materia);
 		System.out.println("Qual a duração da aula: " + this.duracao + "  minutos");
 		System.out.println("Alunos que vem para a aula " + this.alunosquevem + " Alunos que vem");
