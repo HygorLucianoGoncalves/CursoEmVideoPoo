@@ -7,7 +7,7 @@ public class Aula05 {
 		
 		ContaBanco conta1 = new ContaBanco();
 		conta1.setNumConta(2222);
-		conta1.setDono("Jubileu");
+		conta1.setDono("Jubíleu");
 		conta1.abrirConta("cc");
 
 		
