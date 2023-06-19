@@ -14,14 +14,25 @@ public class ContaBanco {
 		this.status = false;
 	}
 
+	public void InfoDaConta() {
+		System.out.println("------------------------------");
+		System.out.println("Conta: " + this.getNumConta());
+		System.out.println("Tipo: " + this.getTipo());
+		System.out.println("Dono: " + this.getDono());
+		System.out.println("Saldo: " + this.getSaldo());
+		System.out.println("Status: " + this.getStatus());
+	}
+	
 	// set and get = numConta
 	public void setNumConta(int numConta) {
 		this.numConta = numConta;
 	}
 
 	public int getNumConta() {
-		return numConta;
+		return this.numConta;
 	}
+	
+	
 	// set and get = tipo
 
 	public void setTipo(String tipo) {
@@ -29,9 +40,11 @@ public class ContaBanco {
 	}
 
 	public String getTipo() {
-		return tipo;
+		return this.tipo;
 	}
 
+	
+	
 	// set and get = dono
 
 	public void setDono(String dono) {
@@ -39,9 +52,11 @@ public class ContaBanco {
 	}
 
 	public String getDono() {
-		return dono;
+		return this.dono;
 	}
 
+	
+	
 	// set and get = saldo;
 
 	public void setSaldo(double saldo) {
@@ -49,9 +64,11 @@ public class ContaBanco {
 	}
 
 	public double getSaldo() {
-		return saldo;
+		return this.saldo;
 	}
 
+	
+	
 	// set and get = status;
 
 	public void setStatus(boolean status) {
@@ -62,69 +79,78 @@ public class ContaBanco {
 		return this.status;
 	}
 
+	
+	
 	// Métodos
+	
+	
 	public void abrirConta(String tipo) {
-		setTipo(tipo);
-		setStatus(true);
-		if (tipo == "CC") {
-			setSaldo(50);
-		} else if (tipo == "CP") {
-			setSaldo(150);
+		this.setTipo(tipo);
+		this.setStatus(true);
+		if (tipo == "CC" || tipo == "cc") {
+			this.setSaldo(50);
+		} else if (tipo == "CP" || tipo == "cp") {
+			this.setSaldo(150);
 		}
-
+		System.out.println("Conta aberta com sucesso");
 	}
 
+	
+	
 	public void fecharConta() {
 
-		if (saldo > 0) {
-			System.out.println("Conta tem dinheiro");
-		} else if (saldo < 0) {
-			System.out.println("Conta com débito");
+		if (this.getSaldo() > 0) {
+			System.out.println("Conta tem dinheiro não pode ser fechada");
+		} else if (this.getSaldo() < 0) {
+			System.out.println("Conta com débito não pode ser fechada");
 		} else {
-			setStatus(false);
+			this.setStatus(false);
+			System.out.println("Conta de " + this.getDono() + " FECHADA");
 		}
+		
 	}
 
+	
+	
 	public void deposita(double valor) {
 
-		if (getStatus() == true) {
-			setSaldo(getSaldo() + valor);
+		if (this.getStatus() == true) {
+			this.setSaldo(this.getSaldo() + valor);
+			System.out.println("Deposito realizado na conta de " + this.getDono());
 		} else {
 			System.out.println("Impossivel Depositar");
 		}
 	}
 
+	
+	
 	public void sacar(double valor) {
-		if (getStatus() == true) {
-			if (getSaldo() >= valor) {
-				setSaldo(getSaldo() - valor);
+		if (this.getStatus() == true) {
+			if (this.getSaldo() >= valor) {
+				this.setSaldo(this.getSaldo() - valor);
+				System.out.println("Saldo realizado na conta de " + this.getDono());
 			} else {
 				System.out.println("Saldo Insuficiente ");
 			}
-
 		} else {
 			System.out.println("Impossivel sacar, Conta está fechada ");
 		}
 	}
 
+	
 	public void pagarMensal() {
-		double valorDaMensalidade = 0;
-		if (getTipo() == "CC") {			
+		int valorDaMensalidade = 0;
+		if (this.getTipo() == "CC") {
 			valorDaMensalidade = 12;
-		} else if(getTipo() == "CP") { 
+		} else if (this.getTipo() == "CP") {
 			valorDaMensalidade = 20;
-		} else {
-			if (getStatus() == true) {
-				if (getSaldo() > valorDaMensalidade) {
-					setSaldo(getSaldo() - valorDaMensalidade); 
-				} else {
-					System.out.println("Saldo Insuficiente");
-				}
-			} else {
-				System.out.println("Impossivel Pagar");
-			}
 		}
-				
+		if (this.getStatus()) {
+			this.setSaldo(this.getSaldo() - valorDaMensalidade);
+			System.out.println("Mensalidade paga com sucesso por " + this.getDono());
+		}else {
+			System.out.println("Impossível pagar uma conta fechada!");
+		}
 	}
 
 }
