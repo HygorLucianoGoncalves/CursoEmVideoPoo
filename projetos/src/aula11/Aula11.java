@@ -43,7 +43,7 @@ public class Aula11 {
 		
 		Tecnico t1 = new Tecnico();
 		
-		t1.setNome("lucas");
+		t1.setNome("lícas");
 		t1.setIdade(21);
 		t1.setSexo("M");
 		t1.setRegistroProfissional(5555);
