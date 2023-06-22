@@ -47,13 +47,8 @@ public abstract class Pessoa {
 		this.experiencia = experiencia;
 	}
 	
-	public void mostra() {
-		System.out.println("=================");
-		System.out.println("Nome: " + getNome());
-		System.out.println("Idade: " + getIdade());
-		System.out.println("Sexo: " + getSexo());
-		System.out.println("=================");
-
-	}
-	
+	@Override
+	public String toString() {
+		return "Pessoa{" + "Nome=" + nome + ", Idade=" + idade + ", sexo=" + sexo + ", experiencia=" + experiencia + "}";
+	}	
 }

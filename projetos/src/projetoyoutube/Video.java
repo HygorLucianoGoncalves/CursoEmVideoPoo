@@ -7,14 +7,15 @@ public class Video implements acoesVideo {
 	private int curtidas;
 	private boolean reproduzindo;
 
-	public Video(String titulo){
+	public Video(String titulo) {
 		this.titulo = titulo;
 		this.avaliacao = 1;
 		this.views = 0;
 		this.curtidas = 0;
 		this.reproduzindo = false;
-		
+
 	}
+
 	// GET
 	public String getTitulo() {
 		return titulo;
@@ -43,7 +44,9 @@ public class Video implements acoesVideo {
 	}
 
 	public void setAvaliacao(int avaliacao) {
-		this.avaliacao = avaliacao;
+		int nova;
+		nova = (int) ((this.avaliacao + avaliacao)/this.views);
+		this.avaliacao = nova;
 	}
 
 	public void setViews(int views) {
@@ -58,8 +61,6 @@ public class Video implements acoesVideo {
 		this.reproduzindo = reproduzindo;
 	}
 
-	
-	
 	@Override
 	public void play() {
 		this.setReproduzindo(true);
@@ -74,14 +75,11 @@ public class Video implements acoesVideo {
 	public void like() {
 		this.curtidas++;
 	}
-	
-	public void mostraInf() {
-		System.out.println("======================");
-		System.out.println(this.getTitulo());
-		System.out.println("O Video teve o total de views de : " + this.getViews());
-		System.out.println("Avaliação e de :"  + this.getAvaliacao());
-		System.out.println("O total de curtidas é " + this.getCurtidas());
-		System.out.println("======================");
+
+	@Override
+	public String toString() {
+		return "Video{" + "titulo=" + titulo + " avaliacao=" + avaliacao + ", views=" + views + ", curtidas=" + curtidas
+				+ ", reproduzindo=" + reproduzindo + "}";
 	}
 
 }
